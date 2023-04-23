@@ -3,6 +3,7 @@ package com.speproject.majorproject.controller;
 import com.speproject.majorproject.entity.Book;
 import com.speproject.majorproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +36,12 @@ public class BookController {
     @GetMapping("/getBookByTitle/{id}")
     public List<Book> getBooksByTitle(@PathVariable("id") String title){
         return bookService.getBooksByTitle(title);
+    }
+
+    @GetMapping("/getAllGenre")
+    public List getAllGenre(){
+        List genreList = bookService.getAllGenre();
+        return genreList;
     }
 
 }

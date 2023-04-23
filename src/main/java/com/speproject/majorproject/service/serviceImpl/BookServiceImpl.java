@@ -38,4 +38,11 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAllByTitleIgnoreCase(genre);
     }
 
+    @Override
+    public List getAllGenre() {
+        List genreList = bookRepository.getAllGenreList();
+        return genreList;
+    }
+
+
 }

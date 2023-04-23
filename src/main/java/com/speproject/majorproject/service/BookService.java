@@ -16,4 +16,6 @@ public interface BookService {
     List<Book> getBooksByAuthor(String genre);
 
     List<Book> getBooksByTitle(String genre);
+
+    List getAllGenre();
 }

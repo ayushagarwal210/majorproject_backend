@@ -2,6 +2,7 @@ package com.speproject.majorproject.repository;
 
 import com.speproject.majorproject.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,7 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     List<Book> findAllByAuthorIgnoreCase(String genre);
 
     List<Book> findAllByTitleIgnoreCase(String genre);
+
+    @Query("SELECT distinct b.genre from Book as b")
+    List getAllGenreList();
 }
