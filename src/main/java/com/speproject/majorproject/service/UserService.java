@@ -14,4 +14,5 @@ public interface UserService {
     Optional<User> getUserById(Long userId);
 
     User loginUser(String email, String password);
+
 }

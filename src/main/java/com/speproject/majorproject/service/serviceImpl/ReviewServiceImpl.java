@@ -8,6 +8,8 @@ import com.speproject.majorproject.repository.BookRepository;
 import com.speproject.majorproject.repository.ReviewRepository;
 import com.speproject.majorproject.repository.UserRepository;
 import com.speproject.majorproject.service.ReviewService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
-
+    private static final Logger logger = LogManager.getLogger(ReviewServiceImpl.class);
     @Autowired
     private ReviewRepository reviewRepository;
     @Autowired
@@ -41,8 +43,10 @@ public class ReviewServiceImpl implements ReviewService {
                     .build();
             reviewDetails.setReviewId(review.getReviewId());
             reviewRepository.save(review);
+            logger.info("Added review with id " + review.getReviewId());
             return reviewDetails;
         }
+        logger.error("Unable to add review. Either the book or user does not exist.");
         return null;
     }
 
@@ -60,6 +64,7 @@ public class ReviewServiceImpl implements ReviewService {
                             .reviewDate(review.getReviewDate())
                     .build());
         }
+        logger.info("Retrieved all reviews.");
         return reviewDetailsList;
     }
 
@@ -80,6 +85,7 @@ public class ReviewServiceImpl implements ReviewService {
             }
 
         }
+        logger.info("Retrieved all reviews for book with id " + bookId);
         return reviewDetailsList;
     }
 
@@ -99,6 +105,7 @@ public class ReviewServiceImpl implements ReviewService {
                         .build());
             }
         }
+        logger.info("Retrieved reviews by user id: " + userId);
         return reviewDetailsList;
     }
 }
