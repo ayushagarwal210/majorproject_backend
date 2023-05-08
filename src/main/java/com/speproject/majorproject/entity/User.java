@@ -1,9 +1,7 @@
 package com.speproject.majorproject.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +23,6 @@ public class User {
     private String password;
     private String address;
     private String phoneNumber;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isAdmin;
 }

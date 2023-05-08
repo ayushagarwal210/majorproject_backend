@@ -18,4 +18,10 @@ public interface BookService {
     List<Book> getBooksByTitle(String genre);
 
     List getAllGenre();
+
+    public Book getBookById(Long bookId);
+
+    public Book updateBook(Long bookId, Book book);
+
+    public void deleteBookById(Long bookId);
 }

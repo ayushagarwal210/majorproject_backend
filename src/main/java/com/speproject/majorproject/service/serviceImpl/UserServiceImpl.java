@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User loginUser(String email,String password){
+    public User signInUser(String email,String password){
         logger.info("Logging in user with email " + email);
         return userRepository.findByEmailAndPassword(email,password);
     }

@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping("/loginUser")
     public User loginUser(@RequestParam String email,@RequestParam String password){
         logger.info("Logging in user with email: {}", email);
-        return userService.loginUser(email, password);
+        return userService.signInUser(email, password);
     }
 
     @GetMapping("/getUsers")

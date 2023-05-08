@@ -13,6 +13,6 @@ public interface UserService {
 
     Optional<User> getUserById(Long userId);
 
-    User loginUser(String email, String password);
+    User signInUser(String email, String password);
 
 }

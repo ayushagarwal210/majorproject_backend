@@ -31,20 +31,35 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/getBookByGenre/{id}")
-    public List<Book> getBooksByGenre(@PathVariable("id") String genre) {
+    @GetMapping("/getBookByGenre/{genre}")
+    public List<Book> getBooksByGenre(@PathVariable("genre") String genre) {
         logger.info("Getting books by genre: {}", genre);
         return bookService.getBooksByGenre(genre);
     }
 
-    @GetMapping("/getBookByAuthor/{id}")
-    public List<Book> getBooksByAuthor(@PathVariable("id") String author) {
+    @PutMapping("/updateBook")
+    public Book updateBook(@PathVariable("id") Long bookId, @RequestBody Book book) {
+
+        return  bookService.updateBook(bookId,book);
+    }
+    @GetMapping("/getBookByAuthor/{author}")
+    public List<Book> getBooksByAuthor(@PathVariable("author") String author) {
         logger.info("Getting books by author: {}", author);
         return bookService.getBooksByAuthor(author);
     }
+    @DeleteMapping("/deleteBookById/{id}")
+    public String deleteBookById(@PathVariable("id") Long bookId) {
+        bookService.deleteBookById(bookId);
+        return "Department deleted successfully";
+    }
 
-    @GetMapping("/getBookByTitle/{id}")
-    public List<Book> getBooksByTitle(@PathVariable("id") String title) {
+    @GetMapping("/getBookById/{id}")
+    public Book getBookById(@PathVariable("id") Long bookId){
+        return bookService.getBookById(bookId);
+    }
+
+    @GetMapping("/getBookByTitle/{title}")
+    public List<Book> getBooksByTitle(@PathVariable("title") String title) {
         logger.info("Getting books by title: {}", title);
         return bookService.getBooksByTitle(title);
     }

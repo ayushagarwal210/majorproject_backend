@@ -28,5 +28,5 @@ public class Book {
     private Double price;
     private Boolean availableForRent;
     private Boolean availableForSale;
-
+    private String image;
 }
