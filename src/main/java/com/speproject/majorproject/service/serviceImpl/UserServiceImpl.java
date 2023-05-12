@@ -1,6 +1,7 @@
 package com.speproject.majorproject.service.serviceImpl;
 
 import com.speproject.majorproject.entity.User;
+import com.speproject.majorproject.exceptions.InvalidCredentialsException;
 import com.speproject.majorproject.repository.UserRepository;
 import com.speproject.majorproject.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -38,8 +39,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signInUser(String email,String password){
+    public User signInUser(String email,String password) throws InvalidCredentialsException {
         logger.info("Logging in user with email " + email);
-        return userRepository.findByEmailAndPassword(email,password);
+        Optional<User> user = userRepository.findByEmailAndPassword(email,password);
+        if(!user.isPresent()) {
+            throw new InvalidCredentialsException("Invalid User name or password");
+        }
+        return user.get();
     }
 }

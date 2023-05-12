@@ -1,6 +1,7 @@
 package com.speproject.majorproject.service;
 
 import com.speproject.majorproject.entity.User;
+import com.speproject.majorproject.exceptions.InvalidCredentialsException;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,6 @@ public interface UserService {
 
     Optional<User> getUserById(Long userId);
 
-    User signInUser(String email, String password);
+    User signInUser(String email, String password) throws InvalidCredentialsException;
 
 }

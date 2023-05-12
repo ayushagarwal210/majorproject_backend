@@ -1,6 +1,7 @@
 package com.speproject.majorproject.controller;
 
 import com.speproject.majorproject.entity.User;
+import com.speproject.majorproject.exceptions.InvalidCredentialsException;
 import com.speproject.majorproject.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -20,16 +22,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/registerUser")
+    @PostMapping("/addUser")
     public User registerUser(@RequestBody User user){
         logger.info("Registering user: {}", user);
         return userService.addUser(user);
     }
 
     @PostMapping("/loginUser")
-    public User loginUser(@RequestParam String email,@RequestParam String password){
-        logger.info("Logging in user with email: {}", email);
-        return userService.signInUser(email, password);
+    public User loginUser(@RequestBody Map<String,String> allParams) throws InvalidCredentialsException {
+//        logger.info("Logging in user with email: {}", email);
+        return userService.signInUser(allParams.get("email"), allParams.get("password"));
     }
 
     @GetMapping("/getUsers")
