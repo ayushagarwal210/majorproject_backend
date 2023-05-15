@@ -22,14 +22,14 @@ public class Purchase {
     private Long purchaseId;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date purchaseDate;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "book_id",
-            referencedColumnName = "bookId"
-    )
-    private Book book;
-
+//
+//    @ManyToOne
+//    @JoinColumn(
+//            name = "book_id",
+//            referencedColumnName = "bookId"
+//    )
+//    private Book book;
+//    private long quantity;
     @ManyToOne
     @JoinColumn(
             name = "user_id",
@@ -37,5 +37,20 @@ public class Purchase {
     )
     private User user;
 
+    private String address;
+
+    private String city;
+
+    private String pincode;
+
+    private String country;
+
+    private String paymentMethod;
+
+    private double shippingPrice;
+
+    private double taxPrice;
+
+    private double totalPrice;
 
 }

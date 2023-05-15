@@ -59,7 +59,7 @@ public class BookController {
     }
 
     @GetMapping("/getBookByTitle/{title}")
-    public List<Book> getBooksByTitle(@PathVariable("title") String title) {
+    public Book getBooksByTitle(@PathVariable("title") String title) {
         logger.info("Getting books by title: {}", title);
         return bookService.getBooksByTitle(title);
     }

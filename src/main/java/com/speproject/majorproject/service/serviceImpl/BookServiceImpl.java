@@ -44,9 +44,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBooksByTitle(String title){
+    public Book getBooksByTitle(String title){
         logger.info("Getting books by title: {}", title);
-        return bookRepository.findAllByTitleIgnoreCase(title);
+        return bookRepository.findByTitleIgnoreCase(title);
     }
 
     @Override

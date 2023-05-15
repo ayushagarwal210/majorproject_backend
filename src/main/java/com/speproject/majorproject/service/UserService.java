@@ -1,5 +1,6 @@
 package com.speproject.majorproject.service;
 
+import com.speproject.majorproject.entity.Book;
 import com.speproject.majorproject.entity.User;
 import com.speproject.majorproject.exceptions.InvalidCredentialsException;
 
@@ -16,4 +17,6 @@ public interface UserService {
 
     User signInUser(String email, String password) throws InvalidCredentialsException;
 
+
+    public User updateUser(Long bookId, User user);
 }

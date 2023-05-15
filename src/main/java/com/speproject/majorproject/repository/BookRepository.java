@@ -12,9 +12,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
 
     List<Book> findAllByGenreIgnoreCase(String genre);
 
-    List<Book> findAllByAuthorIgnoreCase(String genre);
+    List<Book> findAllByAuthorIgnoreCase(String author);
 
-    List<Book> findAllByTitleIgnoreCase(String genre);
+    Book findByTitleIgnoreCase(String title);
 
     @Query("SELECT distinct b.genre from Book as b")
     List getAllGenreList();
