@@ -6,7 +6,7 @@ jwt:
 
 spring:
   profiles:
-    active: "stage"
+    active: "dev"
 
 ---
 spring:
